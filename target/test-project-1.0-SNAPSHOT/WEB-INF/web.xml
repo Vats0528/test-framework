@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
          https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <!-- Déclaration du filtre -->
     <filter>
-    <filter-name>RequestFilter</filter-name>
-    <filter-class>com.framework.dispatcher.RequestFilter</filter-class>
-</filter>
+        <filter-name>RequestFilter</filter-name>
+        <filter-class>com.framework.dispatcher.RequestFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>RequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-<filter-mapping>
-    <filter-name>RequestFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
-
-<servlet>
-    <servlet-name>FrontServlet</servlet-name>
-    <servlet-class>com.framework.servlet.FrontServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-    <servlet-name>FrontServlet</servlet-name>
-    <url-pattern>/front</url-pattern>
-</servlet-mapping>
+    <!-- Une SEULE servlet pour tout gérer -->
+    <servlet>
+        <servlet-name>FrontServlet</servlet-name>
+        <servlet-class>com.framework.servlet.FrontServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>FrontServlet</servlet-name>
+        <url-pattern>/dispatch/*</url-pattern>  <!-- Un seul point d'entrée -->
+    </servlet-mapping>
 
 </web-app>

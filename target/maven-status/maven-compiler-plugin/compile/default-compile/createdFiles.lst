@@ -1,1 +1,3 @@
-Test.class
+com/test/controllers/NotAController.class
+com/test/controllers/AdminController.class
+com/test/controllers/TestController.class
