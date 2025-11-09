@@ -9,12 +9,12 @@ public class TestController {
 
     @Url("/home") // Devient /front/home
     public String home() {
-        return "Bienvenue sur la page d'accueil 🏠 - Controller: " + this.getClass().getSimpleName();
+        return "Bienvenue sur la page d'accueil  - Controller: " + this.getClass().getSimpleName() ;
     }
 
     @Url("/about") // Devient /front/about
     public String about() {
-        return "À propos du framework 🚀 - Controller: " + this.getClass().getSimpleName();
+        return "À propos du framework  - Controller: " + this.getClass().getSimpleName();
     }
 
     // Méthode sans annotation - ne sera pas mappée

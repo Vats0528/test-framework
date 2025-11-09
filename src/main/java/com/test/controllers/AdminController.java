@@ -8,11 +8,11 @@ public class AdminController {
 
     @Url("/dashboard")
     public String dashboard() {
-        return "Tableau de bord administrateur 👨‍💼";
+        return "Tableau de bord administrateur ";
     }
 
     @Url("/users")
     public String users() {
-        return "Gestion des utilisateurs 👥";
+        return "Gestion des utilisateurs ";
     }
 }
