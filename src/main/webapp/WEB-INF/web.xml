@@ -2,10 +2,10 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
-
-    <!-- Déclaration du filtre -->
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    
+    <!-- Filter -->
     <filter>
         <filter-name>RequestFilter</filter-name>
         <filter-class>com.framework.dispatcher.RequestFilter</filter-class>
@@ -15,8 +15,8 @@
         <filter-name>RequestFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <!-- Une SEULE servlet pour tout gérer -->
+    
+    <!-- FrontServlet -->
     <servlet>
         <servlet-name>FrontServlet</servlet-name>
         <servlet-class>com.framework.servlet.FrontServlet</servlet-class>
@@ -25,7 +25,7 @@
     
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
-        <url-pattern>/dispatch/*</url-pattern>  <!-- Un seul point d'entrée -->
+        <url-pattern>/front/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
