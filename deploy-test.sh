@@ -84,7 +84,10 @@ sleep 10
 echo ""
 echo "🎉 Déploiement terminé avec succès!"
 echo "🌐 Accédez à l'application via:"
-echo "   http://localhost:8080/$APP_NAME/"
-echo ""
-echo "📋 URLs de test:"
-echo "   - http://localhost:8080/$APP_NAME/test"
+echo "    http://localhost:8080/test-project/front
+
+    http://localhost:8080/test-project/front/home
+
+    http://localhost:8080/test-project/front/about
+
+    http://localhost:8080/test-project/front/test"

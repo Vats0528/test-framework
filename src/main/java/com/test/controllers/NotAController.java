@@ -2,8 +2,7 @@ package com.test.controllers;
 
 public class NotAController {
     
-    
     public String someMethod() {
-        return "Cette méthode ne sera jamais mappée";
+        return "Tsy hisy mapping ity methode ity";
     }
 }
