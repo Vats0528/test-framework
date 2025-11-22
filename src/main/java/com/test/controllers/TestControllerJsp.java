@@ -8,6 +8,9 @@ public class TestControllerJsp {
 
     @Url("/page")
     public ModelView page() {
-        return new ModelView("test.jsp");
+        ModelView mv = new ModelView("test.jsp");
+        mv.addAttribute("titre", "Bienvenue");
+        mv.addAttribute("message", "Ceci est un message depuis le Sprint 5");
+        return mv;
     }
 }
