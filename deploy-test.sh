@@ -52,9 +52,23 @@ jar -tf "$WAR_FILE" | grep -E "(WEB-INF/lib/|WEB-INF/web.xml)"
 # Étape 6 : Arrêt de Tomcat
 echo "==> Arrêt de Tomcat..."
 if [ -f "$TOMCAT_BIN/shutdown.sh" ]; then
-    $TOMCAT_BIN/shutdown.sh
-    sleep 5
-    echo "✅ Tomcat arrêté"
+    # Vérifier si Tomcat tourne
+    if ps aux | grep -v grep | grep tomcat10 > /dev/null; then
+        echo "🛑 Arrêt de Tomcat 10 en cours..."
+        $TOMCAT_BIN/shutdown.sh
+        # Vérifier que Tomcat est bien arrêté
+        if ps aux | grep -v grep | grep tomcat10 > /dev/null; then
+            echo "⚠️  Tomcat 10 toujours en cours, arrêt forcé..."
+            pkill -f tomcat10
+            sleep 1
+        fi
+        echo "✅ Tomcat 10 arrêté"
+    else
+        echo "ℹ️  Tomcat 10 n'est pas en cours d'exécution"
+    fi
+else
+    echo "⚠️  Script shutdown.sh non trouvé, arrêt via systemd ou kill"
+    sudo systemctl stop tomcat10 2>/dev/null || pkill -f tomcat10
 fi
 
 # Étape 7 : Déployer le WAR
@@ -77,8 +91,13 @@ if [ -f "$TOMCAT_BIN/startup.sh" ]; then
     echo "✅ Tomcat redémarré avec succès"
 fi
 
-# Étape 9 : Attente du déploiement
-sleep 10
+# Étape 10 : Attente du déploiement
+echo "==> Attente du déploiement de l'application..."
+for i in {1..15}; do
+    echo -n "."
+    sleep 1
+done
+echo ""
 
 # Étape 10 : Message de succès
 echo ""
