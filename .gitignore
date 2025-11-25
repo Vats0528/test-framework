@@ -1,0 +1,39 @@
+# Fichiers de compilation
+target/
+bin/
+build/
+*.class
+*.jar
+*.war
+*.ear
+
+# Fichiers d'IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.vscode/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+*.log
+
+# Fichiers de déploiement/logs
+logs/
+*.log
+*.tmp
+*.temp
+
+# Fichiers de configuration environnement
+*.properties
+*.yml
+*.yaml
+!src/main/resources/**
+
+# Fichiers de déploiement
+deploy/
+dist/
