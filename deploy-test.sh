@@ -70,12 +70,11 @@ if [ -f "$TOMCAT_BIN/shutdown.sh" ]; then
     if ps aux | grep -v grep | grep tomcat10 > /dev/null; then
         echo "🛑 Arrêt de Tomcat 10 en cours..."
         $TOMCAT_BIN/shutdown.sh
-        sleep 8
         # Vérifier que Tomcat est bien arrêté
         if ps aux | grep -v grep | grep tomcat10 > /dev/null; then
             echo "⚠️  Tomcat 10 toujours en cours, arrêt forcé..."
             pkill -f tomcat10
-            sleep 3
+            sleep 1
         fi
         echo "✅ Tomcat 10 arrêté"
     else
@@ -84,7 +83,6 @@ if [ -f "$TOMCAT_BIN/shutdown.sh" ]; then
 else
     echo "⚠️  Script shutdown.sh non trouvé, arrêt via systemd ou kill"
     sudo systemctl stop tomcat10 2>/dev/null || pkill -f tomcat10
-    sleep 5
 fi
 
 # Étape 7 : Nettoyer l'ancienne déploiement
@@ -128,7 +126,7 @@ fi
 echo "==> Attente du déploiement de l'application..."
 for i in {1..15}; do
     echo -n "."
-    sleep 2
+    sleep 1
 done
 echo ""
 
