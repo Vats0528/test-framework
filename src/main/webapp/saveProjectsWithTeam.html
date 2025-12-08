@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 7: Projets + Équipe</title>
+</head>
+<body>
+    <h1>Test 7: Projets + Équipe</h1>
+    <p>Format: projects[index].attribut + teamName</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveProjectsWithTeam">
+        <h3>Informations Équipe</h3>
+        <div>
+            <label>Nom Équipe:</label>
+            <input type="text" name="teamName" value="DevTeam Alpha" required>
+        </div>
+        
+        <h3>Projets</h3>
+        
+        <h4>Projet 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="projects[0].id" value="101" required>
+        </div>
+        <div>
+            <label>Titre:</label>
+            <input type="text" name="projects[0].title" value="Frontend Redesign" required>
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="projects[0].description" value="Refonte complète du design" required>
+        </div>
+        <div>
+            <label>Budget:</label>
+            <input type="number" name="projects[0].budget" value="75000" step="0.01" required>
+        </div>
+        <div>
+            <label>Actif:</label>
+            <select name="projects[0].active" required>
+                <option value="true">Actif</option>
+                <option value="false">Inactif</option>
+            </select>
+        </div>
+        
+        <h4>Projet 2</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="projects[1].id" value="102" required>
+        </div>
+        <div>
+            <label>Titre:</label>
+            <input type="text" name="projects[1].title" value="API Integration" required>
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="projects[1].description" value="Intégration d'API externes" required>
+        </div>
+        <div>
+            <label>Budget:</label>
+            <input type="number" name="projects[1].budget" value="120000" step="0.01" required>
+        </div>
+        <div>
+            <label>Actif:</label>
+            <select name="projects[1].active" required>
+                <option value="true" selected>Actif</option>
+                <option value="false">Inactif</option>
+            </select>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

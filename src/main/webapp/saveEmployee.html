@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 1: Employé Simple</title>
+</head>
+<body>
+    <h1>Test 1: Employé Simple</h1>
+    <p>Format: employee.attribut=valeur</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveEmployee">
+        <div>
+            <label>ID Employé:</label>
+            <input type="number" name="employee.id" value="1" required>
+        </div>
+        
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employee.name" value="John Doe" required>
+        </div>
+        
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employee.salary" value="50000" step="0.01" required>
+        </div>
+        
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employee.department" value="IT" required>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 3: Plusieurs Employés</title>
+</head>
+<body>
+    <h1>Test 3: Plusieurs Employés</h1>
+    <p>Format: employees[index].attribut=valeur</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveEmployees">
+        <h3>Employé 1</h3>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[0].id" value="1" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[0].name" value="John Doe" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[0].salary" value="50000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[0].department" value="IT" required>
+        </div>
+        
+        <h3>Employé 2</h3>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[1].id" value="2" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[1].name" value="Jane Smith" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[1].salary" value="60000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[1].department" value="HR" required>
+        </div>
+        
+        <h3>Employé 3</h3>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[2].id" value="3" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[2].name" value="Bob Johnson" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[2].salary" value="55000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[2].department" value="Finance" required>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>
