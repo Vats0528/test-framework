@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 6: Projet Simple</title>
+</head>
+<body>
+    <h1>Test 6: Projet Simple</h1>
+    <p>Format: project.attribut=valeur</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveProject">
+        <div>
+            <label>ID Projet:</label>
+            <input type="number" name="project.id" value="100" required>
+        </div>
+        
+        <div>
+            <label>Titre:</label>
+            <input type="text" name="project.title" value="Application Web 2024" required>
+        </div>
+        
+        <div>
+            <label>Description:</label>
+            <input type="text" name="project.description" value="Développement d'une plateforme e-commerce" required>
+        </div>
+        
+        <div>
+            <label>Budget (€):</label>
+            <input type="number" name="project.budget" value="150000" step="0.01" required>
+        </div>
+        
+        <div>
+            <label>Statut:</label>
+            <select name="project.active" required>
+                <option value="true">Actif</option>
+                <option value="false">Inactif</option>
+            </select>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

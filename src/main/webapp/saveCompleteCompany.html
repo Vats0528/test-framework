@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 5: Entreprise Complète</title>
+</head>
+<body>
+    <h1>Test 5: Entreprise Complète</h1>
+    <p>Format: employees[], departments[], companyName</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveCompleteCompany">
+        <h3>Informations Entreprise</h3>
+        <div>
+            <label>Nom Entreprise:</label>
+            <input type="text" name="companyName" value="TechCorp Inc" required>
+        </div>
+        
+        <h3>Employés</h3>
+        
+        <h4>Employé 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[0].id" value="1" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[0].name" value="Alex Dupont" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[0].salary" value="52000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[0].department" value="IT" required>
+        </div>
+        
+        <h4>Employé 2</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[1].id" value="2" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[1].name" value="Sophie Laurent" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[1].salary" value="58000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[1].department" value="IT" required>
+        </div>
+        
+        <h3>Départements</h3>
+        
+        <h4>Département 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="departments[0].id" value="10" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="departments[0].name" value="IT Department" required>
+        </div>
+        <div>
+            <label>Localisation:</label>
+            <input type="text" name="departments[0].location" value="Paris" required>
+        </div>
+        
+        <h4>Département 2</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="departments[1].id" value="20" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="departments[1].name" value="HR Department" required>
+        </div>
+        <div>
+            <label>Localisation:</label>
+            <input type="text" name="departments[1].location" value="Lyon" required>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

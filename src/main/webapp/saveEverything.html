@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 8: Tout Combiné</title>
+</head>
+<body>
+    <h1>Test 8: Tout Combiné</h1>
+    <p>Format: employees[], departments[], projects[], description</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveEverything">
+        <h3>Description</h3>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="description" value="Test complet du binding" required>
+        </div>
+        
+        <h3>Employés</h3>
+        
+        <h4>Employé 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="employees[0].id" value="1" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employees[0].name" value="Alice" required>
+        </div>
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employees[0].salary" value="50000" step="0.01" required>
+        </div>
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employees[0].department" value="IT" required>
+        </div>
+        
+        <h3>Départements</h3>
+        
+        <h4>Département 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="departments[0].id" value="10" required>
+        </div>
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="departments[0].name" value="IT" required>
+        </div>
+        <div>
+            <label>Localisation:</label>
+            <input type="text" name="departments[0].location" value="Paris" required>
+        </div>
+        
+        <h3>Projets</h3>
+        
+        <h4>Projet 1</h4>
+        <div>
+            <label>ID:</label>
+            <input type="number" name="projects[0].id" value="100" required>
+        </div>
+        <div>
+            <label>Titre:</label>
+            <input type="text" name="projects[0].title" value="Web App" required>
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="projects[0].description" value="Appli web" required>
+        </div>
+        <div>
+            <label>Budget:</label>
+            <input type="number" name="projects[0].budget" value="100000" step="0.01" required>
+        </div>
+        <div>
+            <label>Actif:</label>
+            <select name="projects[0].active" required>
+                <option value="true" selected>Actif</option>
+                <option value="false">Inactif</option>
+            </select>
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

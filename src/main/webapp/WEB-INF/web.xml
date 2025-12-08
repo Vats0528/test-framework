@@ -5,7 +5,8 @@
                              https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     
-    <!-- Filter -->
+    <!-- RequestFilter désactivé car crée un double forward avec FrontServlet -->
+    <!--
     <filter>
         <filter-name>RequestFilter</filter-name>
         <filter-class>com.framework.dispatcher.RequestFilter</filter-class>
@@ -15,6 +16,7 @@
         <filter-name>RequestFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    -->
     
     <!-- FrontServlet -->
     <servlet>

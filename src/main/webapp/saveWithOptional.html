@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test 9: Paramètres Optionnels</title>
+</head>
+<body>
+    <h1>Test 9: Paramètres Optionnels</h1>
+    <p>Format: Tester avec des paramètres manquants ou vides</p>
+    
+    <form method="POST" action="/test-project/front/sprint8/saveWithOptional">
+        <h3>Employé (Optionnel)</h3>
+        <div>
+            <label>ID Employé:</label>
+            <input type="number" name="employee.id" placeholder="Optionnel">
+        </div>
+        
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="employee.name" placeholder="Optionnel">
+        </div>
+        
+        <div>
+            <label>Salaire:</label>
+            <input type="number" name="employee.salary" step="0.01" placeholder="Optionnel">
+        </div>
+        
+        <div>
+            <label>Département:</label>
+            <input type="text" name="employee.department" placeholder="Optionnel">
+        </div>
+        
+        <h3>Département (Optionnel)</h3>
+        <div>
+            <label>ID Département:</label>
+            <input type="number" name="department.id" placeholder="Optionnel">
+        </div>
+        
+        <div>
+            <label>Nom:</label>
+            <input type="text" name="department.name" placeholder="Optionnel">
+        </div>
+        
+        <div>
+            <label>Localisation:</label>
+            <input type="text" name="department.location" placeholder="Optionnel">
+        </div>
+        
+        <br>
+        <button type="submit">Soumettre</button>
+        <button type="reset">Réinitialiser</button>
+    </form>
+    
+    <p><a href="index-sprint8.html">Retour</a></p>
+</body>
+</html>

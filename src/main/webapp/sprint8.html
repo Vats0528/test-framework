@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 8 - Binding Automatique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .test-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .test-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .array-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .array-item {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .array-item-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #004085;
+        }
+        
+        .success {
+            color: #28a745;
+        }
+        
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Sprint 8 - Binding Automatique avec Réflexion</h1>
+            <p>Formulaires de test pour la liaison automatique des paramètres HTTP aux objets Java</p>
+        </div>
+
+        <div class="tests-grid">
+            <!-- Test 1: Objet Simple -->
+            <div class="test-card">
+                <h3>Test 1: Employé Simple</h3>
+                <p>Teste le binding d'un objet simple avec plusieurs attributs de types différents.</p>
+                <form action="/front/sprint8/saveEmployee" method="POST">
+                    <div class="form-group">
+                        <label for="emp_id">ID:</label>
+                        <input type="number" name="employee.id" id="emp_id" required value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp_name">Nom:</label>
+                        <input type="text" name="employee.name" id="emp_name" required value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp_salary">Salaire:</label>
+                        <input type="number" name="employee.salary" id="emp_salary" step="0.01" required value="50000">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp_dept">Département:</label>
+                        <input type="text" name="employee.department" id="emp_dept" required value="IT">
+                    </div>
+                    <button type="submit">Sauvegarder Employé</button>
+                </form>
+                <div class="info-box">
+                    <strong>Format HTTP:</strong>
+                    <div class="code-block">employee.id=1
+employee.name=John Doe
+employee.salary=50000
+employee.department=IT</div>
+                </div>
+            </div>
+
+            <!-- Test 2: Département Simple -->
+            <div class="test-card">
+                <h3>Test 2: Département Simple</h3>
+                <p>Teste le binding d'un objet Department avec ses trois attributs.</p>
+                <form action="/front/sprint8/saveDepartment" method="POST">
+                    <div class="form-group">
+                        <label for="dept_id">ID:</label>
+                        <input type="number" name="department.id" id="dept_id" required value="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="dept_name">Nom:</label>
+                        <input type="text" name="department.name" id="dept_name" required value="Engineering">
+                    </div>
+                    <div class="form-group">
+                        <label for="dept_loc">Localisation:</label>
+                        <input type="text" name="department.location" id="dept_loc" required value="Paris">
+                    </div>
+                    <button type="submit">Sauvegarder Département</button>
+                </form>
+                <div class="info-box">
+                    <strong>Format HTTP:</strong>
+                    <div class="code-block">department.id=10
+department.name=Engineering
+department.location=Paris</div>
+                </div>
+            </div>
+
+            <!-- Test 3: Tableau d'Employés -->
+            <div class="test-card">
+                <h3>Test 3: Tableau d'Employés</h3>
+                <p>Teste le binding d'un tableau d'objets avec le format <code>name[index].attribut</code>.</p>
+                <form action="/front/sprint8/saveEmployees" method="POST">
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 1</div>
+                            <div class="form-group">
+                                <label>ID:</label>
+                                <input type="number" name="employees[0].id" required value="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Nom:</label>
+                                <input type="text" name="employees[0].name" required value="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Salaire:</label>
+                                <input type="number" name="employees[0].salary" step="0.01" required value="50000">
+                            </div>
+                        </div>
+
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 2</div>
+                            <div class="form-group">
+                                <label>ID:</label>
+                                <input type="number" name="employees[1].id" required value="2">
+                            </div>
+                            <div class="form-group">
+                                <label>Nom:</label>
+                                <input type="text" name="employees[1].name" required value="Jane Smith">
+                            </div>
+                            <div class="form-group">
+                                <label>Salaire:</label>
+                                <input type="number" name="employees[1].salary" step="0.01" required value="60000">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Sauvegarder Employés</button>
+                </form>
+                <div class="info-box">
+                    <strong>Format HTTP:</strong>
+                    <div class="code-block">employees[0].id=1
+employees[0].name=John Doe
+employees[0].salary=50000
+employees[1].id=2
+employees[1].name=Jane Smith
+employees[1].salary=60000</div>
+                </div>
+            </div>
+
+            <!-- Test 4: Employés + Département -->
+            <div class="test-card">
+                <h3>Test 4: Employés + Département</h3>
+                <p>Teste le binding simultané d'un tableau et d'un objet simple.</p>
+                <form action="/front/sprint8/saveEmployeesAndDepartment" method="POST">
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 1</div>
+                            <input type="number" name="employees[0].id" required value="1" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="employees[0].name" required value="John Doe" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="number" name="employees[0].salary" step="0.01" required value="50000" style="width: 100%; padding: 8px; border: 1px solid #ddd;">
+                        </div>
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 2</div>
+                            <input type="number" name="employees[1].id" required value="2" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="employees[1].name" required value="Jane Smith" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="number" name="employees[1].salary" step="0.01" required value="60000" style="width: 100%; padding: 8px; border: 1px solid #ddd;">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label style="font-weight: 600; color: #667eea;">Département</label>
+                        <input type="number" name="department.id" required value="10" placeholder="ID" style="margin-bottom: 8px;">
+                        <input type="text" name="department.name" required value="IT" placeholder="Nom" style="margin-bottom: 8px;">
+                        <input type="text" name="department.location" required value="Paris" placeholder="Localisation">
+                    </div>
+                    <button type="submit">Sauvegarder</button>
+                </form>
+                <div class="info-box">
+                    <strong>Démontre:</strong> Liaison simultanée de tableaux et d'objets simples
+                </div>
+            </div>
+
+            <!-- Test 5: Projet (Types Mixtes) -->
+            <div class="test-card">
+                <h3>Test 5: Projet (Types Mixtes)</h3>
+                <p>Teste le casting automatique: int, String, double, boolean.</p>
+                <form action="/front/sprint8/saveProject" method="POST">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <input type="number" name="project.id" required value="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Titre:</label>
+                        <input type="text" name="project.title" required value="New Project">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" name="project.description" required value="A great project">
+                    </div>
+                    <div class="form-group">
+                        <label>Budget:</label>
+                        <input type="number" name="project.budget" step="0.01" required value="150000.50">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="project.active" value="true" checked>
+                            Actif?
+                        </label>
+                    </div>
+                    <button type="submit">Sauvegarder Projet</button>
+                </form>
+                <div class="info-box">
+                    <strong>Types de données:</strong> int, String (x2), double, boolean
+                </div>
+            </div>
+
+            <!-- Test 6: Projets + Responsable -->
+            <div class="test-card">
+                <h3>Test 6: Projets + Responsable</h3>
+                <p>Teste le binding de tableaux avec un paramètre String simple.</p>
+                <form action="/front/sprint8/saveProjectsWithTeam" method="POST">
+                    <div class="form-group">
+                        <label for="team_leader">Chef d'équipe:</label>
+                        <input type="text" name="teamLeader" id="team_leader" required value="John Manager">
+                    </div>
+
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Projet 1</div>
+                            <input type="number" name="projects[0].id" required value="100" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="projects[0].title" required value="Project A" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="number" name="projects[0].budget" step="0.01" required value="100000" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <label style="margin-bottom: 0;">
+                                <input type="checkbox" name="projects[0].active" value="true" checked style="width: auto;">
+                                Actif
+                            </label>
+                        </div>
+
+                        <div class="array-item">
+                            <div class="array-item-title">Projet 2</div>
+                            <input type="number" name="projects[1].id" required value="101" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="projects[1].title" required value="Project B" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="number" name="projects[1].budget" step="0.01" required value="200000" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <label style="margin-bottom: 0;">
+                                <input type="checkbox" name="projects[1].active" value="true" style="width: auto;">
+                                Actif
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit">Sauvegarder</button>
+                </form>
+                <div class="info-box">
+                    <strong>Démontre:</strong> Combinaison String simple + tableau d'objets
+                </div>
+            </div>
+
+            <!-- Test 7: Complet (Employés + Départements + Projets + Company) -->
+            <div class="test-card" style="grid-column: 1 / -1;">
+                <h3>Test 7: Données Complètes (Approche Complexe)</h3>
+                <p>Teste le binding simultané de plusieurs tableaux et d'un String - cas d'usage complet.</p>
+                <form action="/front/sprint8/saveEverything" method="POST">
+                    <div class="form-group">
+                        <label for="company_name"><strong>Nom de l'Entreprise:</strong></label>
+                        <input type="text" name="companyName" id="company_name" required value="TechCorp" style="font-weight: 600;">
+                    </div>
+
+                    <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">👥 Employés</h4>
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 1</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" name="employees[0].id" required value="1" placeholder="ID">
+                                <input type="text" name="employees[0].name" required value="Alice Johnson" placeholder="Nom">
+                                <input type="number" name="employees[0].salary" required value="65000" placeholder="Salaire" colspan="2" style="grid-column: 1 / -1;">
+                                <input type="text" name="employees[0].department" required value="Engineering" placeholder="Département" style="grid-column: 1 / -1;">
+                            </div>
+                        </div>
+                        <div class="array-item">
+                            <div class="array-item-title">Employé 2</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="number" name="employees[1].id" required value="2" placeholder="ID">
+                                <input type="text" name="employees[1].name" required value="Bob Williams" placeholder="Nom">
+                                <input type="number" name="employees[1].salary" required value="55000" placeholder="Salaire" style="grid-column: 1 / -1;">
+                                <input type="text" name="employees[1].department" required value="Sales" placeholder="Département" style="grid-column: 1 / -1;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">🏢 Départements</h4>
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Département 1</div>
+                            <input type="number" name="departments[0].id" required value="10" placeholder="ID" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="departments[0].name" required value="Engineering" placeholder="Nom" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="departments[0].location" required value="Paris" placeholder="Localisation" style="width: 100%; padding: 8px; border: 1px solid #ddd;">
+                        </div>
+                        <div class="array-item">
+                            <div class="array-item-title">Département 2</div>
+                            <input type="number" name="departments[1].id" required value="20" placeholder="ID" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="departments[1].name" required value="Sales" placeholder="Nom" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="departments[1].location" required value="Lyon" placeholder="Localisation" style="width: 100%; padding: 8px; border: 1px solid #ddd;">
+                        </div>
+                    </div>
+
+                    <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">📋 Projets</h4>
+                    <div class="array-container">
+                        <div class="array-item">
+                            <div class="array-item-title">Projet 1</div>
+                            <input type="number" name="projects[0].id" required value="100" placeholder="ID" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="projects[0].title" required value="Web Platform" placeholder="Titre" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="text" name="projects[0].description" required value="Modern web application" placeholder="Description" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <input type="number" name="projects[0].budget" required value="250000" placeholder="Budget" style="width: 100%; margin-bottom: 8px; padding: 8px; border: 1px solid #ddd;">
+                            <label style="margin-bottom: 0;">
+                                <input type="checkbox" name="projects[0].active" value="true" checked style="width: auto;">
+                                Actif
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" style="margin-top: 20px; padding: 15px; font-size: 1.1em;">💾 Sauvegarder Toutes les Données</button>
+                </form>
+                <div class="info-box" style="margin-top: 15px;">
+                    <strong>Cas d'usage réel:</strong> Démontre la liaison simultanée de plusieurs tableaux d'objets complexes avec un paramètre String simple.
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation -->
+        <div class="test-card" style="margin-bottom: 30px;">
+            <h3>📚 Documentation Technique</h3>
+            <h4 style="color: #666; margin-top: 15px;">Architecture du Framework</h4>
+            <p>Le système de binding automatique utilise la <strong>réflexion Java</strong> pour:</p>
+            <ol style="margin-left: 20px; color: #666;">
+                <li>Analyser les attributs de chaque paramètre de méthode</li>
+                <li>Parcourir les paramètres HTTP pour trouver les correspondances</li>
+                <li>Convertir automatiquement les types (String → int, double, boolean, etc.)</li>
+                <li>Instancier et remplir les objets</li>
+                <li>Créer les tableaux d'objets avec la taille appropriée</li>
+            </ol>
+
+            <h4 style="color: #666; margin-top: 20px;">Formats Supportés</h4>
+            <div class="code-block" style="margin: 10px 0;">// Objet simple
+employee.id=1
+employee.name=John
+
+// Tableau d'objets
+employees[0].id=1
+employees[0].name=John
+employees[1].id=2
+employees[1].name=Jane
+
+// Types simples
+companyName=TechCorp
+departmentId=42</div>
+
+            <h4 style="color: #666; margin-top: 20px;">Classe Principale</h4>
+            <p><code>com.framework.util.ParameterBinder</code></p>
+            <p style="color: #666; margin-top: 10px;"><strong>Méthodes clés:</strong></p>
+            <ul style="margin-left: 20px; color: #666;">
+                <li><code>bindParameters(Parameter[], HttpServletRequest)</code> - Point d'entrée principal</li>
+                <li><code>bindObject(...)</code> - Lie un objet simple</li>
+                <li><code>bindArray(...)</code> - Lie un tableau d'objets</li>
+                <li><code>bindPrimitive(...)</code> - Lie un type primitif/String</li>
+            </ul>
+
+            <h4 style="color: #666; margin-top: 20px;">Intégration dans FrontServlet</h4>
+            <div class="code-block">Object[] args = ParameterBinder.bindParameters(
+    methodParams,
+    request
+);
+Object result = method.invoke(controller, args);</div>
+
+            <h4 style="color: #666; margin-top: 20px;">Conventions Requises</h4>
+            <ul style="margin-left: 20px; color: #666;">
+                <li>✓ Les classes modèles <strong>DOIVENT</strong> avoir un <strong>constructeur sans paramètres</strong> (ou vide)</li>
+                <li>✓ Les noms d'attributs doivent être <strong>accessibles via réflexion</strong> (getters/setters ou fields public)</li>
+                <li>✓ Le <strong>format des paramètres HTTP</strong> doit respecter: <code>objectName.fieldName</code> ou <code>objectName[index].fieldName</code></li>
+            </ul>
+
+            <h4 style="color: #666; margin-top: 20px;">Exemple de Contrôleur</h4>
+            <div class="code-block">@PostMapping("/save")
+public String save(Employee[] employees, Department dept, String title) {
+    // employees, dept et title sont automatiquement bindés
+    // via réflexion à partir de request.getParameter()
+    for (Employee e : employees) {
+        System.out.println(e.getName());
+    }
+    return "Données sauvegardées";
+}</div>
+
+            <h4 style="color: #666; margin-top: 20px;">Exemple de Classe Modèle</h4>
+            <div class="code-block">public class Employee {
+    private int id;
+    private String name;
+    private double salary;
+    
+    // REQUIS: Constructeur vide
+    public Employee() {}
+    
+    // Getters et Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    // ... autres getters/setters
+}</div>
+        </div>
+    </div>
+</body>
+</html>
