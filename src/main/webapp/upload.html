@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Test Upload</title>
+</head>
+<body>
+  <h2>Test Upload</h2>
+  <form method="post" enctype="multipart/form-data" action="/test-project/upload">
+    <label>Fichier: <input type="file" name="file" /></label><br/><br/>
+    <label>Description: <input type="text" name="description" /></label><br/><br/>
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <h2>Upload multiple (same field name `photos`)</h2>
+  <form method="post" enctype="multipart/form-data" action="/test-project/uploadMultiple">
+    <label>Photos: <input type="file" name="photos" multiple/></label><br/><br/>
+    <button type="submit">Envoyer plusieurs</button>
+  </form>
+
+</body>
+</html>

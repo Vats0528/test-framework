@@ -25,7 +25,7 @@ public class Sprint8Controller {
      * - employee.salary=50000
      * - employee.department=IT
      */
-    @PostMapping("/sprint8/saveEmployee")
+    @PostMapping("/saveEmployee")
     public String saveEmployee(Employee employee) {
         System.out.println("✓ Employé reçu: " + employee);
         return "Employé sauvegardé: " + employee.getName() + 
@@ -39,7 +39,7 @@ public class Sprint8Controller {
      * - department.name=Engineering
      * - department.location=Paris
      */
-    @PostMapping("/sprint8/saveDepartment")
+    @PostMapping("/saveDepartment")
     public String saveDepartment(Department department) {
         System.out.println("✓ Département reçu: " + department);
         return "Département sauvegardé: " + department.getName() + 
@@ -58,7 +58,7 @@ public class Sprint8Controller {
      * - employees[1].salary=60000
      * - employees[1].department=HR
      */
-    @PostMapping("/sprint8/saveEmployees")
+    @PostMapping("/saveEmployees")
     public String saveEmployees(Employee[] employees) {
         System.out.println("✓ " + employees.length + " employé(s) reçu(s)");
         StringBuilder result = new StringBuilder("Employés sauvegardés:\n");
@@ -87,7 +87,7 @@ public class Sprint8Controller {
      * - department.name=IT
      * - department.location=Paris
      */
-    @PostMapping("/sprint8/saveEmployeesAndDepartment")
+    @PostMapping("/saveEmployeesAndDepartment")
     public String saveEmployeesAndDepartment(Employee[] employees, Department department) {
         System.out.println("✓ " + employees.length + " employé(s) et 1 département reçu(s)");
         StringBuilder result = new StringBuilder();
@@ -120,7 +120,7 @@ public class Sprint8Controller {
      * - departments[1].location=Lyon
      * - companyName=TechCorp
      */
-    @PostMapping("/sprint8/saveCompleteCompany")
+    @PostMapping("/saveCompleteCompany")
     public String saveCompleteCompany(Employee[] employees, Department[] departments, String companyName) {
         System.out.println("✓ Company data reçue pour " + companyName);
         StringBuilder result = new StringBuilder();
@@ -153,7 +153,7 @@ public class Sprint8Controller {
      * - project.budget=150000.50
      * - project.active=true
      */
-    @PostMapping("/sprint8/saveProject")
+    @PostMapping("/saveProject")
     public String saveProject(Project project) {
         System.out.println("✓ Projet reçu: " + project);
         return "Projet sauvegardé:\n" +
@@ -177,7 +177,7 @@ public class Sprint8Controller {
      * - projects[1].active=false
      * - teamLeader=John Manager
      */
-    @PostMapping("/sprint8/saveProjectsWithTeam")
+    @PostMapping("/saveProjectsWithTeam")
     public String saveProjectsWithTeam(Project[] projects, String teamLeader) {
         System.out.println("✓ " + projects.length + " projet(s) pour l'équipe de " + teamLeader);
         StringBuilder result = new StringBuilder();
@@ -200,7 +200,7 @@ public class Sprint8Controller {
      * Test 8: Cas complexe - Sauvegarder tout en même temps
      * Démontre la capacité du framework à gérer plusieurs paramètres complexes simultanément
      */
-    @PostMapping("/sprint8/saveEverything")
+    @PostMapping("/saveEverything")
     public String saveEverything(Employee[] employees, Department[] departments, 
                                  Project[] projects, String companyName) {
         System.out.println("✓ Données complètes reçues pour " + companyName);
@@ -232,7 +232,7 @@ public class Sprint8Controller {
      * Test 9: Vérification des types null et valeurs par défaut
      * Teste le comportement du framework quand certains paramètres sont manquants
      */
-    @PostMapping("/sprint8/saveWithOptional")
+    @PostMapping("/saveWithOptional")
     public String saveWithOptional(Employee employee, Department department) {
         System.out.println("✓ Données optionnelles reçues");
         StringBuilder result = new StringBuilder();
