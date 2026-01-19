@@ -204,7 +204,7 @@
             <div class="test-card">
                 <h3>Test 1: Employé Simple</h3>
                 <p>Teste le binding d'un objet simple avec plusieurs attributs de types différents.</p>
-                <form action="/front/sprint8/saveEmployee" method="POST">
+                <form action="/test-project/front/sprint8/saveEmployee" method="POST">
                     <div class="form-group">
                         <label for="emp_id">ID:</label>
                         <input type="number" name="employee.id" id="emp_id" required value="1">
@@ -236,7 +236,7 @@ employee.department=IT</div>
             <div class="test-card">
                 <h3>Test 2: Département Simple</h3>
                 <p>Teste le binding d'un objet Department avec ses trois attributs.</p>
-                <form action="/front/sprint8/saveDepartment" method="POST">
+                <form action="/test-project/front/sprint8/saveDepartment" method="POST">
                     <div class="form-group">
                         <label for="dept_id">ID:</label>
                         <input type="number" name="department.id" id="dept_id" required value="10">
@@ -263,7 +263,7 @@ department.location=Paris</div>
             <div class="test-card">
                 <h3>Test 3: Tableau d'Employés</h3>
                 <p>Teste le binding d'un tableau d'objets avec le format <code>name[index].attribut</code>.</p>
-                <form action="/front/sprint8/saveEmployees" method="POST">
+                <form action="/test-project/front/sprint8/saveEmployees" method="POST">
                     <div class="array-container">
                         <div class="array-item">
                             <div class="array-item-title">Employé 1</div>
@@ -314,7 +314,7 @@ employees[1].salary=60000</div>
             <div class="test-card">
                 <h3>Test 4: Employés + Département</h3>
                 <p>Teste le binding simultané d'un tableau et d'un objet simple.</p>
-                <form action="/front/sprint8/saveEmployeesAndDepartment" method="POST">
+                <form action="/test-project/front/sprint8/saveEmployeesAndDepartment" method="POST">
                     <div class="array-container">
                         <div class="array-item">
                             <div class="array-item-title">Employé 1</div>
@@ -347,7 +347,7 @@ employees[1].salary=60000</div>
             <div class="test-card">
                 <h3>Test 5: Projet (Types Mixtes)</h3>
                 <p>Teste le casting automatique: int, String, double, boolean.</p>
-                <form action="/front/sprint8/saveProject" method="POST">
+                <form action="/test-project/front/sprint8/saveProject" method="POST">
                     <div class="form-group">
                         <label>ID:</label>
                         <input type="number" name="project.id" required value="100">
@@ -381,7 +381,7 @@ employees[1].salary=60000</div>
             <div class="test-card">
                 <h3>Test 6: Projets + Responsable</h3>
                 <p>Teste le binding de tableaux avec un paramètre String simple.</p>
-                <form action="/front/sprint8/saveProjectsWithTeam" method="POST">
+                <form action="/test-project/front/sprint8/saveProjectsWithTeam" method="POST">
                     <div class="form-group">
                         <label for="team_leader">Chef d'équipe:</label>
                         <input type="text" name="teamLeader" id="team_leader" required value="John Manager">
@@ -422,7 +422,7 @@ employees[1].salary=60000</div>
             <div class="test-card" style="grid-column: 1 / -1;">
                 <h3>Test 7: Données Complètes (Approche Complexe)</h3>
                 <p>Teste le binding simultané de plusieurs tableaux et d'un String - cas d'usage complet.</p>
-                <form action="/front/sprint8/saveEverything" method="POST">
+                <form action="/test-project/front/sprint8/saveEverything" method="POST">
                     <div class="form-group">
                         <label for="company_name"><strong>Nom de l'Entreprise:</strong></label>
                         <input type="text" name="companyName" id="company_name" required value="TechCorp" style="font-weight: 600;">
