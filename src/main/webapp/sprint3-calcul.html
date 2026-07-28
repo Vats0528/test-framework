@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 3 &amp; 4 - Paramètres de requête</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f5f7;
+            color: #24292f;
+            line-height: 1.5;
+            padding: 24px 16px 64px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.10);
+        }
+        h1 { font-size: 22px; margin-bottom: 6px; }
+        h2 { font-size: 17px; margin-bottom: 12px; }
+        p.hint { color: #57606a; font-size: 14px; margin-bottom: 16px; }
+        label { display: block; margin-bottom: 12px; font-size: 14px; }
+        input[type=number], input[type=text] {
+            display: block;
+            margin-top: 4px;
+            padding: 7px 10px;
+            width: 200px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            background: #0969da;
+            color: #fff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        button:hover { background: #0757b0; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 13px;
+            background: #f6f8fa;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="card">
+        <h1>Sprint 3 &amp; 4 - Paramètres de requête</h1>
+        <p class="hint">Les paramètres du formulaire sont injectés dans la méthode du
+            contrôleur via <code>@RequestParam</code>, avec conversion
+            <code>String</code> vers <code>int</code>.</p>
+        <a href="index.html">Retour au sommaire</a>
+    </div>
+
+    <div class="card">
+        <h2>Addition : POST /calcul</h2>
+        <p class="hint">Cible :
+            <code>postCalcul(@RequestParam("nombre1") int, @RequestParam("nombre2") int)</code></p>
+        <form method="POST" action="calcul">
+            <label>Premier nombre
+                <input type="number" name="nombre1" value="12" required>
+            </label>
+            <label>Second nombre
+                <input type="number" name="nombre2" value="30" required>
+            </label>
+            <button type="submit">Calculer</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Paramètre absent</h2>
+        <p class="hint">Envoi d'un seul nombre : le paramètre manquant prend sa valeur
+            par défaut (0) au lieu de provoquer une erreur.</p>
+        <form method="POST" action="calcul">
+            <input type="hidden" name="nombre1" value="7">
+            <button type="submit">Envoyer nombre1=7 seulement</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Paramètres dans la query string : GET /pageWithParams</h2>
+        <p class="hint">Les deux valeurs sont transmises à une vue JSP.</p>
+        <form method="GET" action="front/pageWithParams">
+            <label>Titre
+                <input type="text" name="titre" value="Titre de test">
+            </label>
+            <label>Message
+                <input type="text" name="message" value="Message de test">
+            </label>
+            <button type="submit">Afficher la page</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

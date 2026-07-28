@@ -121,26 +121,26 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 8: Tout Combiné</h1>
             <p>Le test maximal avec TOUS les types combinés</p>
         </div>
-        
+
         <div class="info-box">
-            <p><strong>⚠️ Test Ultra-Complexe!</strong></p>
+            <p><strong> Test Ultra-Complexe!</strong></p>
             <p>Format: employees[], departments[], projects[], description (String)</p>
             <p><strong>Cas d'usage:</strong> Tester les limites du binding avec tous les types</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveEverything" method="POST">
-            <div class="section-title">📝 Description</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveEverything" method="POST">
+            <div class="section-title"> Description</div>
             <div class="form-group">
                 <label>Description:</label>
                 <input type="text" name="description" value="Test complet du binding" required>
             </div>
-            
-            <div class="section-title">👥 Employés</div>
+
+            <div class="section-title"> Employés</div>
             <div class="section-title" style="margin-top: 8px; border: none; font-size: 0.9em;">Employé 1</div>
             <div class="form-group">
                 <label>ID:</label>
@@ -158,8 +158,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[0].department" value="IT" required>
             </div>
-            
-            <div class="section-title">🏢 Départements</div>
+
+            <div class="section-title"> Départements</div>
             <div class="section-title" style="margin-top: 8px; border: none; font-size: 0.9em;">Département 1</div>
             <div class="form-group">
                 <label>ID:</label>
@@ -173,8 +173,8 @@
                 <label>Localisation:</label>
                 <input type="text" name="departments[0].location" value="Paris" required>
             </div>
-            
-            <div class="section-title">📊 Projets</div>
+
+            <div class="section-title"> Projets</div>
             <div class="section-title" style="margin-top: 8px; border: none; font-size: 0.9em;">Projet 1</div>
             <div class="form-group">
                 <label>ID:</label>
@@ -195,14 +195,14 @@
             <div class="form-group">
                 <label>Actif:</label>
                 <select name="projects[0].active" required>
-                    <option value="true" selected>✓ Actif</option>
-                    <option value="false">✗ Inactif</option>
+                    <option value="true" selected> Actif</option>
+                    <option value="false"> Inactif</option>
                 </select>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

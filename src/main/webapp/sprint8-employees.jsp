@@ -114,20 +114,20 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 3: Plusieurs Employés</h1>
             <p>Binding d'un tableau d'objets Employee</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format de binding:</strong> <code>employees[index].attribut=valeur</code></p>
             <p><strong>Exemple:</strong> employees[0].id=1, employees[0].name=John, employees[1].id=2, employees[1].name=Jane</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder plusieurs employés en une seule requête</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveEmployees" method="POST">
-            <div class="section-title">📋 Employé 1</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveEmployees" method="POST">
+            <div class="section-title"> Employé 1</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[0].id" value="1" required>
@@ -144,8 +144,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[0].department" value="IT" required>
             </div>
-            
-            <div class="section-title">📋 Employé 2</div>
+
+            <div class="section-title"> Employé 2</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[1].id" value="2" required>
@@ -162,8 +162,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[1].department" value="HR" required>
             </div>
-            
-            <div class="section-title">📋 Employé 3</div>
+
+            <div class="section-title"> Employé 3</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[2].id" value="3" required>
@@ -180,10 +180,10 @@
                 <label>Département:</label>
                 <input type="text" name="employees[2].department" value="Finance" required>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

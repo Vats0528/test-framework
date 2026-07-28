@@ -1,11 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Framework MVC - Pages de test par sprint</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f5f7;
+            color: #24292f;
+            line-height: 1.5;
+            padding: 24px 16px 64px;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        header {
+            background: #fff;
+            border-radius: 8px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.12);
+        }
+
+        h1 { font-size: 26px; margin-bottom: 8px; }
+
+        header p { color: #57606a; }
+
+        .sprint {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.10);
+        }
+
+        .sprint h2 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .num {
+            background: #0969da;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .sprint > p {
+            color: #57606a;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        table { width: 100%; border-collapse: collapse; }
+
+        td {
+            padding: 7px 8px;
+            border-top: 1px solid #eaeef2;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        tr:first-child td { border-top: none; }
+
+        td.verb { width: 72px; }
+
+        td.what { color: #57606a; }
+
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+
+        .get { background: #ddf4e4; color: #116329; }
+        .post { background: #fff1e5; color: #953800; }
+        .put { background: #e6ecff; color: #0a3069; }
+        .del { background: #ffebe9; color: #82071e; }
+        .page { background: #eef2f5; color: #424a53; }
+
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 13px;
+            background: #f6f8fa;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 24px;
+            padding: 18px 24px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.10);
+            font-size: 14px;
+            color: #57606a;
+        }
+
+        footer code { font-size: 12px; }
+    </style>
 </head>
 <body>
-    <h1>BONJOURRRRRR</h1>
+<div class="container">
+
+    <header>
+        <h1>Framework MVC Java - pages de test</h1>
+        <p>Toutes les pages et URLs de test, sprint par sprint (1 à 11 bis).
+           Les liens <span class="badge page">PAGE</span> ouvrent un formulaire,
+           les liens <span class="badge get">GET</span> appellent directement un endpoint.</p>
+    </header>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 1 &amp; 2</span> Front Controller et scan des contrôleurs</h2>
+        <p>La FrontServlet reçoit toutes les requêtes, scanne les classes annotées
+           <code>@Controller</code> et route vers la bonne méthode.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/dashboard">front/dashboard</a></td>
+                <td class="what">Méthode mappée par <code>@Url</code> (AdminController)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/users">front/users</a></td>
+                <td class="what">Seconde méthode du même contrôleur</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/url-inexistante" data-expects="404">front/url-inexistante</a></td>
+                <td class="what">404 du framework, avec la liste des routes enregistrées</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 3 &amp; 4</span> Paramètres de requête et @RequestParam</h2>
+        <p>Injection des paramètres de la query string et du corps de requête,
+           avec conversion automatique des types.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint3-calcul.html">sprint3-calcul.html</a></td>
+                <td class="what">Formulaire d'addition : <code>POST /calcul</code> avec deux entiers</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/pageWithParams?titre=Titre%20de%20test&amp;message=Message%20de%20test">front/pageWithParams?titre=...&amp;message=...</a></td>
+                <td class="what">Deux <code>@RequestParam</code> affichés dans une JSP</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/pageWithParams">front/pageWithParams</a></td>
+                <td class="what">Sans paramètre : valeurs par défaut du contrôleur</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 5</span> ModelView et vues JSP</h2>
+        <p>Le contrôleur retourne un <code>ModelView</code> : le framework forwarde
+           vers la JSP et expose les attributs à la vue.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/page">front/page</a></td>
+                <td class="what">ModelView vers <code>test.jsp</code> avec titre et message</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="page5">page5</a></td>
+                <td class="what">Ancienne annotation <code>@Url</code> (compatibilité)</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 6</span> Verbes HTTP et URLs dynamiques</h2>
+        <p>Une même URL peut être mappée en GET, POST, PUT et DELETE, avec des
+           paramètres dans le chemin : <code>/user/{id}</code>.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint6-methods.html">sprint6-methods.html</a></td>
+                <td class="what">Les quatre verbes sur <code>/user/{id}</code>, réponse affichée dans la page</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="user/42">user/42</a></td>
+                <td class="what">Paramètre d'URL converti en <code>int</code></td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="zavatra/salama">zavatra/salama</a></td>
+                <td class="what">Paramètre d'URL de type <code>String</code></td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 7</span> @RequestMapping générique</h2>
+        <p>Annotation unique avec le verbe en attribut :
+           <code>@RequestMapping(value = "/custom", method = HttpMethod.GET)</code>.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="custom">custom</a></td>
+                <td class="what">Endpoint déclaré avec <code>@RequestMapping</code></td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 8</span> Binding automatique d'objets</h2>
+        <p>Les paramètres <code>employee.name</code>, <code>employees[0].name</code>
+           sont lies automatiquement a des objets et des tableaux d'objets.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-index.jsp">sprint8-index.jsp</a></td>
+                <td class="what">Sommaire des 9 formulaires de binding (version JSP)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="index-sprint8.html">index-sprint8.html</a></td>
+                <td class="what">Les mêmes 9 tests, version HTML simple</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-employee.jsp">sprint8-employee.jsp</a></td>
+                <td class="what">Test 1 : un objet simple (Employee)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-department.jsp">sprint8-department.jsp</a></td>
+                <td class="what">Test 2 : un autre objet simple (Department)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-employees.jsp">sprint8-employees.jsp</a></td>
+                <td class="what">Test 3 : un tableau d'objets</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-employees-dept.jsp">sprint8-employees-dept.jsp</a></td>
+                <td class="what">Test 4 : tableau + objet simple</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-company.jsp">sprint8-company.jsp</a></td>
+                <td class="what">Test 5 : deux tableaux + une String</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-project.jsp">sprint8-project.jsp</a></td>
+                <td class="what">Test 6 : types mixtes (int, String, double, boolean)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-projects-team.jsp">sprint8-projects-team.jsp</a></td>
+                <td class="what">Test 7 : tableau de projets + chef d'equipe</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-everything.jsp">sprint8-everything.jsp</a></td>
+                <td class="what">Test 8 : trois tableaux simultanement</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint8-optional.jsp">sprint8-optional.jsp</a></td>
+                <td class="what">Test 9 : paramètres manquants et valeurs par défaut</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 9</span> API REST et réponses JSON</h2>
+        <p><code>@API</code>, <code>@Json</code> et <code>@Get</code> sérialisent la
+           valeur retournée en JSON, dans une enveloppe <code>ApiResponse</code>.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="api/employees">api/employees</a></td>
+                <td class="what">Liste JSON avec <code>status</code>, <code>code</code> et <code>count</code></td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="api/employees/2">api/employees/2</a></td>
+                <td class="what">Un seul objet, retrouve par paramètre d'URL</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="api/employees/999">api/employees/999</a></td>
+                <td class="what">Introuvable : enveloppe d'erreur JSON code 404</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="api/search?department=IT">api/search?department=IT</a></td>
+                <td class="what">Filtrage par query string</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="api/ping">api/ping</a></td>
+                <td class="what">Retour String sérialise en JSON</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 10</span> Upload de fichiers</h2>
+        <p>Requêtes <code>multipart/form-data</code> liées a
+           <code>UploadedFile</code>, <code>UploadedFile[]</code> ou
+           <code>Map&lt;String, UploadedFile&gt;</code>.</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="upload.html">upload.html</a></td>
+                <td class="what">Fichier unique, fichiers multiples, et tous les fichiers en Map</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="sprint">
+        <h2><span class="num">Sprint 11 &amp; 11 bis</span> Sessions et sécurité</h2>
+        <p><code>@Session</code> injecte des valeurs de session,
+           <code>@Authenticated</code> et <code>@RequiresRole</code> bloquent l'accès
+           avant l'exécution de la méthode (401 / 403).</p>
+        <table>
+            <tr>
+                <td class="verb"><span class="badge page">PAGE</span></td>
+                <td><a href="sprint11-index.jsp">sprint11-index.jsp</a></td>
+                <td class="what">Connexion, profil, session, déconnexion et pages protégées</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/session/public">front/session/public</a></td>
+                <td class="what"><code>@AllowAnonymous</code> : accessible sans connexion</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/session/dashboard">front/session/dashboard</a></td>
+                <td class="what"><code>@Authenticated</code> : 401 si non connecté</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/session/admin">front/session/admin</a></td>
+                <td class="what"><code>@RequiresRole("ADMIN")</code> : 401 anonyme, 403 si rôle insuffisant</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/session/info">front/session/info</a></td>
+                <td class="what">Contenu complet de la session (<code>CustomSession</code>)</td>
+            </tr>
+            <tr>
+                <td class="verb"><span class="badge get">GET</span></td>
+                <td><a href="front/session/logout">front/session/logout</a></td>
+                <td class="what">Vide la session</td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        Scénario de test des rôles : se connecter avec <code>admin</code> /
+        <code>admin123</code> donne le rôle ADMIN (accès complet) ; tout autre
+        identifiant donne le rôle USER (dashboard accessible, 403 sur la page admin).
+        <br><br>
+        Suite de tests automatisés équivalente :
+        <code>mvn -pl test-framework test</code>
+    </footer>
+
+</div>
 </body>
 </html>

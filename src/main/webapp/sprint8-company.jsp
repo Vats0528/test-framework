@@ -120,26 +120,26 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 5: Entreprise Complète</h1>
             <p>Binding complexe avec tableaux multiples et type primitif</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format:</strong> employees[], departments[], companyName (String)</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder toute une structure d'entreprise</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveCompleteCompany" method="POST">
-            <div class="section-title">🏢 Informations Entreprise</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveCompleteCompany" method="POST">
+            <div class="section-title"> Informations Entreprise</div>
             <div class="form-group">
                 <label>Nom Entreprise:</label>
                 <input type="text" name="companyName" value="TechCorp Inc" required>
             </div>
-            
-            <div class="section-title">👥 Employés</div>
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Employé 1</div>
+
+            <div class="section-title"> Employés</div>
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Employé 1</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[0].id" value="1" required>
@@ -156,8 +156,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[0].department" value="IT" required>
             </div>
-            
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Employé 2</div>
+
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Employé 2</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[1].id" value="2" required>
@@ -174,9 +174,9 @@
                 <label>Département:</label>
                 <input type="text" name="employees[1].department" value="IT" required>
             </div>
-            
-            <div class="section-title">🏢 Départements</div>
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Département 1</div>
+
+            <div class="section-title"> Départements</div>
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Département 1</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="departments[0].id" value="10" required>
@@ -189,8 +189,8 @@
                 <label>Localisation:</label>
                 <input type="text" name="departments[0].location" value="Paris" required>
             </div>
-            
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Département 2</div>
+
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Département 2</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="departments[1].id" value="20" required>
@@ -203,10 +203,10 @@
                 <label>Localisation:</label>
                 <input type="text" name="departments[1].location" value="Lyon" required>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

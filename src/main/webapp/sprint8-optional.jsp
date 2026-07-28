@@ -122,63 +122,63 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 9: Paramètres Optionnels</h1>
             <p>Tester le binding avec des paramètres manquants</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Objectif:</strong> Vérifier que le binding gère gracieusement les paramètres manquants ou vides</p>
             <p><strong>Cas d'usage:</strong> Les utilisateurs ne soumettent pas toujours tous les champs</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveWithOptional" method="POST">
-            <div class="section-title">👤 Employé (Facultatif)</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveWithOptional" method="POST">
+            <div class="section-title"> Employé (Facultatif)</div>
             <div class="form-group">
                 <label for="emp-id">ID Employé:</label>
                 <input type="number" id="emp-id" name="employee.id" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel - laissez vide pour tester les valeurs par défaut</div>
+                <div class="optional-notice"> Optionnel - laissez vide pour tester les valeurs par défaut</div>
             </div>
-            
+
             <div class="form-group">
                 <label for="emp-name">Nom:</label>
                 <input type="text" id="emp-name" name="employee.name" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel</div>
+                <div class="optional-notice"> Optionnel</div>
             </div>
-            
+
             <div class="form-group">
                 <label for="emp-salary">Salaire:</label>
                 <input type="number" id="emp-salary" name="employee.salary" placeholder="Laissez vide pour ommettre" step="0.01">
-                <div class="optional-notice">💡 Optionnel</div>
+                <div class="optional-notice"> Optionnel</div>
             </div>
-            
+
             <div class="form-group">
                 <label for="emp-dept">Département:</label>
                 <input type="text" id="emp-dept" name="employee.department" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel</div>
+                <div class="optional-notice"> Optionnel</div>
             </div>
-            
-            <div class="section-title">🏢 Département (Facultatif)</div>
+
+            <div class="section-title"> Département (Facultatif)</div>
             <div class="form-group">
                 <label for="dept-id">ID Département:</label>
                 <input type="number" id="dept-id" name="department.id" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel - laissez vide pour tester les valeurs par défaut</div>
+                <div class="optional-notice"> Optionnel - laissez vide pour tester les valeurs par défaut</div>
             </div>
-            
+
             <div class="form-group">
                 <label for="dept-name">Nom:</label>
                 <input type="text" id="dept-name" name="department.name" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel</div>
+                <div class="optional-notice"> Optionnel</div>
             </div>
-            
+
             <div class="form-group">
                 <label for="dept-location">Localisation:</label>
                 <input type="text" id="dept-location" name="department.location" placeholder="Laissez vide pour ommettre">
-                <div class="optional-notice">💡 Optionnel</div>
+                <div class="optional-notice"> Optionnel</div>
             </div>
-            
-            <div class="section-title">🧪 Cas de Test</div>
+
+            <div class="section-title"> Cas de Test</div>
             <div class="info-box">
                 <p><strong>Essayez:</strong></p>
                 <p>1. Soumettre avec TOUS les champs vides</p>
@@ -186,10 +186,10 @@
                 <p>3. Soumettre avec employee.name vide mais id rempli</p>
                 <p>4. Soumettre avec tous les paramètres remplis</p>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

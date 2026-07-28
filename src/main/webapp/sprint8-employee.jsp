@@ -104,42 +104,42 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 1: Employé Simple</h1>
             <p>Binding d'un objet Employee simple</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format de binding:</strong> <code>employee.attribut=valeur</code></p>
             <p><strong>Exemple:</strong> employee.id=1, employee.name=John Doe, employee.salary=50000</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder les données d'un seul employé</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveEmployee" method="POST">
+
+        <form action="<%= request.getContextPath() %>/front/saveEmployee" method="POST">
             <div class="form-group">
                 <label for="id">ID Employé:</label>
                 <input type="number" id="id" name="employee.id" value="1" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="employee.name" value="John Doe" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="salary">Salaire:</label>
                 <input type="number" id="salary" name="employee.salary" value="50000" step="0.01" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="department">Département:</label>
                 <input type="text" id="department" name="employee.department" value="IT" required>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>
