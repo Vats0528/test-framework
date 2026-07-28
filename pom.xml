@@ -15,16 +15,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <tomcat.version>10.1.17</tomcat.version>
+        <!-- port de ./run.sh, surchargeable : mvn ... -Dport=9090 -->
+        <port>8080</port>
     </properties>
 
     <dependencies>
-        <!-- Framework local -->
+        <!-- Framework : dépendance Maven normale (résolue depuis le reactor ou
+             le dépôt local), donc les tests utilisent toujours le framework
+             qui vient d'être compilé, pas un JAR figé dans lib/ -->
         <dependency>
             <groupId>com</groupId>
             <artifactId>framework</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/framework-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- Jakarta Servlet (Tomcat) -->
@@ -48,6 +51,12 @@
             <version>5.9.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Mockito pour les mocks -->
         <dependency>
@@ -60,6 +69,21 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Tomcat embarqué : déploie la vraie webapp (web.xml + JSP) pendant
+             les tests, pour tester chaque sprint via de vraies requêtes HTTP -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -80,17 +104,25 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
+                <!-- Le framework arrive dans WEB-INF/lib via la dépendance Maven
+                     (scope compile), plus besoin de copier lib/ à la main -->
+            </plugin>
+            <!-- ./run.sh : lance l'application dans un Tomcat embarqué.
+                 exec:exec (et non exec:java) : Tomcat a besoin d'une vraie JVM,
+                 le classloader de exec:java casse le parsing de web.xml. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
-                    <!-- Copie le framework dans WEB-INF/lib -->
-                    <webResources>
-                        <resource>
-                            <directory>lib</directory>
-                            <targetPath>WEB-INF/lib</targetPath>
-                            <includes>
-                                <include>**/*.jar</include>
-                            </includes>
-                        </resource>
-                    </webResources>
+                    <executable>java</executable>
+                    <classpathScope>test</classpathScope>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>-Dport=${port}</argument>
+                        <argument>com.test.support.DevServer</argument>
+                    </arguments>
                 </configuration>
             </plugin>
             <plugin>
@@ -101,6 +133,9 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
+                    <!-- Les tests par sprint partagent un seul Tomcat embarqué -->
+                    <reuseForks>true</reuseForks>
+                    <forkCount>1</forkCount>
                 </configuration>
             </plugin>
         </plugins>

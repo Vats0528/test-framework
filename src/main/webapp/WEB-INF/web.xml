@@ -10,6 +10,14 @@
         <servlet-name>FrontServlet</servlet-name>
         <servlet-class>com.framework.servlet.FrontServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+        <!-- Sprint 10 : upload de fichiers. Déclaré explicitement ici (et pas
+             seulement via @MultipartConfig sur la classe) pour que request.getPart()
+             fonctionne quel que soit le mode de déploiement. -->
+        <multipart-config>
+            <max-file-size>10485760</max-file-size>
+            <max-request-size>52428800</max-request-size>
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
     </servlet>
     
     <!-- Mappings pour les routes dynamiques (excluent les fichiers statiques) -->
@@ -90,6 +98,18 @@
         <url-pattern>/page</url-pattern>
     </servlet-mapping>
 
+    <!-- Sprint 5 : ancienne annotation @Url -->
+    <servlet-mapping>
+        <servlet-name>FrontServlet</servlet-name>
+        <url-pattern>/page5</url-pattern>
+    </servlet-mapping>
+
+    <!-- Sprints 11 & 11 bis : sessions et sécurité -->
+    <servlet-mapping>
+        <servlet-name>FrontServlet</servlet-name>
+        <url-pattern>/session/*</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
         <url-pattern>/pageWithParams</url-pattern>
@@ -119,6 +139,11 @@
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
         <url-pattern>/uploadMultiple</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FrontServlet</servlet-name>
+        <url-pattern>/uploadMap</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -120,27 +120,27 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 7: Projets + Équipe</h1>
             <p>Binding d'un tableau de projets avec un String (équipe)</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format:</strong> projects[index].attribut + teamName (String)</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder plusieurs projets avec le nom de l'équipe</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveProjectsWithTeam" method="POST">
-            <div class="section-title">👥 Informations Équipe</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveProjectsWithTeam" method="POST">
+            <div class="section-title"> Informations Équipe</div>
             <div class="form-group">
                 <label for="team">Nom Équipe:</label>
                 <input type="text" id="team" name="teamName" value="DevTeam Alpha" required>
             </div>
-            
-            <div class="section-title">📊 Projets</div>
-            
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Projet 1</div>
+
+            <div class="section-title"> Projets</div>
+
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Projet 1</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="projects[0].id" value="101" required>
@@ -160,12 +160,12 @@
             <div class="form-group">
                 <label>Actif:</label>
                 <select name="projects[0].active" required>
-                    <option value="true">✓ Actif</option>
-                    <option value="false">✗ Inactif</option>
+                    <option value="true"> Actif</option>
+                    <option value="false"> Inactif</option>
                 </select>
             </div>
-            
-            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;">📋 Projet 2</div>
+
+            <div class="section-title" style="margin-top: 10px; border: none; font-size: 0.95em;"> Projet 2</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="projects[1].id" value="102" required>
@@ -185,14 +185,14 @@
             <div class="form-group">
                 <label>Actif:</label>
                 <select name="projects[1].active" required>
-                    <option value="true" selected>✓ Actif</option>
-                    <option value="false">✗ Inactif</option>
+                    <option value="true" selected> Actif</option>
+                    <option value="false"> Inactif</option>
                 </select>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

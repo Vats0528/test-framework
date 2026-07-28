@@ -114,21 +114,21 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 4: Employés + Département</h1>
             <p>Binding mixte d'un tableau et d'un objet</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format de binding:</strong> <code>employees[index].attribut=valeur</code> + <code>department.attribut=valeur</code></p>
             <p><strong>Cas d'usage:</strong> Sauvegarder plusieurs employés et leur département en une seule requête</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveEmployeesAndDepartment" method="POST">
-            <div class="section-title">👥 Employés (Tableau)</div>
-            
-            <div class="section-title" style="margin-top: 15px; border: none;">📋 Employé 1</div>
+
+        <form action="<%= request.getContextPath() %>/front/saveEmployeesAndDepartment" method="POST">
+            <div class="section-title"> Employés (Tableau)</div>
+
+            <div class="section-title" style="margin-top: 15px; border: none;"> Employé 1</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[0].id" value="1" required>
@@ -145,8 +145,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[0].department" value="IT" required>
             </div>
-            
-            <div class="section-title" style="margin-top: 15px; border: none;">📋 Employé 2</div>
+
+            <div class="section-title" style="margin-top: 15px; border: none;"> Employé 2</div>
             <div class="form-group">
                 <label>ID:</label>
                 <input type="number" name="employees[1].id" value="2" required>
@@ -163,8 +163,8 @@
                 <label>Département:</label>
                 <input type="text" name="employees[1].department" value="IT" required>
             </div>
-            
-            <div class="section-title">🏢 Département</div>
+
+            <div class="section-title"> Département</div>
             <div class="form-group">
                 <label>ID Département:</label>
                 <input type="number" name="department.id" value="10" required>
@@ -177,10 +177,10 @@
                 <label>Localisation:</label>
                 <input type="text" name="department.location" value="Paris" required>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

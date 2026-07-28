@@ -104,37 +104,37 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 2: Département Simple</h1>
             <p>Binding d'un objet Department simple</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format de binding:</strong> <code>department.attribut=valeur</code></p>
             <p><strong>Exemple:</strong> department.id=10, department.name=Engineering, department.location=Paris</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder les données d'un département</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveDepartment" method="POST">
+
+        <form action="<%= request.getContextPath() %>/front/saveDepartment" method="POST">
             <div class="form-group">
                 <label for="id">ID Département:</label>
                 <input type="number" id="id" name="department.id" value="10" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="department.name" value="Engineering" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="location">Localisation:</label>
                 <input type="text" id="location" name="department.location" value="Paris" required>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>

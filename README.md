@@ -1,10 +1,10 @@
 # Test Framework - Sprint 8
 
-## 📋 Vue d'ensemble
+## Vue d'ensemble
 
 Ce dossier contient l'application web de test pour valider les fonctionnalités du framework Sprint 8 - Binding Automatique avec Réflexion.
 
-## 📁 Structure du Projet
+## Structure du Projet
 
 ```
 test-framework/
@@ -34,7 +34,7 @@ test-framework/
 └── README.md
 ```
 
-## 🚀 Démarrage Rapide
+## Démarrage Rapide
 
 ### 1. Compiler le Framework
 
@@ -61,7 +61,7 @@ mvn clean test
 mvn package
 ```
 
-## 🧪 Tests
+## Tests
 
 ### Tests Unitaires (ParameterBinderTest)
 
@@ -73,16 +73,16 @@ mvn test -Dtest=ParameterBinderTest
 
 **Tests inclus:**
 
-1. ✅ Binding d'un objet simple
-2. ✅ Binding d'un tableau d'objets
-3. ✅ Binding de types primitifs
-4. ✅ Binding avec types mixtes (int, String, double, boolean)
-5. ✅ Binding avec paramètres manquants
-6. ✅ Binding d'un tableau vide
-7. ✅ Binding de plusieurs objets différents
-8. ✅ Binding avec conversion de types
-9. ✅ Binding d'un tableau avec index non-séquentiel
-10. ✅ Binding avec valeurs vides
+1. Binding d'un objet simple
+2. Binding d'un tableau d'objets
+3. Binding de types primitifs
+4. Binding avec types mixtes (int, String, double, boolean)
+5. Binding avec paramètres manquants
+6. Binding d'un tableau vide
+7. Binding de plusieurs objets différents
+8. Binding avec conversion de types
+9. Binding d'un tableau avec index non-séquentiel
+10. Binding avec valeurs vides
 
 **Résumé du Résultat:**
 ```
@@ -106,7 +106,7 @@ BUILD SUCCESS
 | 8 | `/sprint8/saveEverything` | POST | Tous les types combinés |
 | 9 | `/sprint8/saveWithOptional` | POST | Paramètres optionnels |
 
-## 📝 Modèles de Données
+## Modèles de Données
 
 ### Employee.java
 
@@ -116,7 +116,7 @@ public class Employee {
     private String name;
     private double salary;
     private String department;
-    
+
     public Employee() {} // Requis
     // Getters et setters...
 }
@@ -138,7 +138,7 @@ public class Department {
     private int id;
     private String name;
     private String location;
-    
+
     public Department() {} // Requis
     // Getters et setters...
 }
@@ -161,7 +161,7 @@ public class Project {
     private String description;
     private double budget;
     private boolean active;
-    
+
     public Project() {} // Requis
     // Getters et setters...
 }
@@ -177,18 +177,18 @@ project.budget=150000.50
 project.active=true
 ```
 
-## 🌐 Interface Web de Test
+## Interface Web de Test
 
 Une interface HTML complète est fournie dans `src/main/webapp/sprint8.html`
 
 ### Caractéristiques
 
-✅ Design responsive
-✅ 7 formulaires interactifs
-✅ Affichage des formats HTTP
-✅ Documentation intégrée
-✅ Exemples de code
-✅ Styles modernes CSS
+Design responsive
+7 formulaires interactifs
+Affichage des formats HTTP
+Documentation intégrée
+Exemples de code
+Styles modernes CSS
 
 ### Accès
 
@@ -196,7 +196,7 @@ Une interface HTML complète est fournie dans `src/main/webapp/sprint8.html`
 http://localhost:8080/test-project-1.0-SNAPSHOT/sprint8.html
 ```
 
-## 🔍 Exécution Manuelle des Tests
+## Exécution Manuelle des Tests
 
 ### Test 1: Employé Simple
 
@@ -213,7 +213,7 @@ curl -X POST "http://localhost:8080/test-project-1.0-SNAPSHOT/front/sprint8/save
 Employé sauvegardé: John Doe (ID: 1, Salaire: 50000.0)
 ```
 
-## 🛠️ Déploiement
+## Déploiement
 
 ### Avec Tomcat
 
@@ -232,7 +232,7 @@ cd /path/to/tomcat/bin
 # http://localhost:8080/test-project-1.0-SNAPSHOT/
 ```
 
-## 📊 Dépendances
+## Dépendances
 
 **Dépendances de Compilation:**
 - `jakarta.servlet:jakarta.servlet-api:6.0.0`
@@ -244,20 +244,20 @@ cd /path/to/tomcat/bin
 - `org.mockito:mockito-core:5.3.1`
 - `org.mockito:mockito-junit-jupiter:5.3.1`
 
-## ✅ Résumé
+## Résumé
 
 Le test-framework fournit:
 
-✅ 10 tests unitaires JUnit 5 (100% passage)
-✅ 9 tests d'intégration dans le contrôleur
-✅ 7 formulaires HTML interactifs
-✅ 3 modèles de données complets
-✅ Documentation complète et commentée
+10 tests unitaires JUnit 5 (100% passage)
+9 tests d'intégration dans le contrôleur
+7 formulaires HTML interactifs
+3 modèles de données complets
+Documentation complète et commentée
 
-**Prêt à tester le framework Sprint 8! 🚀**
+**Prêt à tester le framework Sprint 8! **
 
 ---
 
-**Version:** 1.0  
-**Dernière modification:** Décembre 2025  
+**Version:** 1.0
+**Dernière modification:** Décembre 2025
 **Auteur:** Sprint 8 Team

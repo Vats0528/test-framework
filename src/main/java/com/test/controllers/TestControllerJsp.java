@@ -6,7 +6,10 @@ import com.framework.model.ModelView;
 @Controller
 public class TestControllerJsp {
 
-    @Url("/page")
+    // Sprint 5 : ancienne annotation @Url (compatibilité).
+    // URL distincte de /page (TestController) : deux mappings identiques
+    // rendaient la route dépendante de l'ordre de scan des classes.
+    @Url("/page5")
     public ModelView page() {
         ModelView mv = new ModelView("test.jsp");
         mv.addAttribute("titre", "Bienvenue");

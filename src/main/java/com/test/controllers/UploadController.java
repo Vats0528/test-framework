@@ -3,6 +3,8 @@ package com.test.controllers;
 import com.framework.annotation.*;
 import com.framework.util.UploadedFile;
 
+import java.util.Map;
+
 @Controller
 public class UploadController {
 
@@ -25,6 +27,20 @@ public class UploadController {
         sb.append("Reçu ").append(photos.length).append(" fichier(s):\n");
         for (UploadedFile f : photos) {
             sb.append(String.format("- %s (%d bytes)\n", f.getFileName(), f.getContent().length));
+        }
+        return sb.toString();
+    }
+
+    // POST - tous les fichiers de la requête, indexés par nom de champ
+    @PostMapping("/uploadMap")
+    public String uploadMap(Map<String, UploadedFile> files) {
+        if (files == null || files.isEmpty()) return "Aucun fichier reçu";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Reçu ").append(files.size()).append(" fichier(s):\n");
+        for (Map.Entry<String, UploadedFile> entry : files.entrySet()) {
+            UploadedFile f = entry.getValue();
+            sb.append(String.format("- %s => %s (%d bytes)\n",
+                    entry.getKey(), f.getFileName(), f.getContent().length));
         }
         return sb.toString();
     }

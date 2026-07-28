@@ -7,7 +7,7 @@ import com.test.models.Project;
 
 /**
  * Sprint 8 - Contrôleur de test pour le binding automatique avec réflexion
- * 
+ *
  * Démontre:
  * 1. Binding d'objets simples
  * 2. Binding de tableaux d'objets
@@ -27,8 +27,8 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveEmployee")
     public String saveEmployee(Employee employee) {
-        System.out.println("✓ Employé reçu: " + employee);
-        return "Employé sauvegardé: " + employee.getName() + 
+        System.out.println("Employé reçu: " + employee);
+        return "Employé sauvegardé: " + employee.getName() +
                " (ID: " + employee.getId() + ", Salaire: " + employee.getSalary() + ")";
     }
 
@@ -41,8 +41,8 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveDepartment")
     public String saveDepartment(Department department) {
-        System.out.println("✓ Département reçu: " + department);
-        return "Département sauvegardé: " + department.getName() + 
+        System.out.println("Département reçu: " + department);
+        return "Département sauvegardé: " + department.getName() +
                " situé à " + department.getLocation();
     }
 
@@ -60,9 +60,9 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveEmployees")
     public String saveEmployees(Employee[] employees) {
-        System.out.println("✓ " + employees.length + " employé(s) reçu(s)");
+        System.out.println("" + employees.length + " employé(s) reçu(s)");
         StringBuilder result = new StringBuilder("Employés sauvegardés:\n");
-        
+
         for (int i = 0; i < employees.length; i++) {
             System.out.println("  [" + i + "] " + employees[i]);
             result.append((i + 1)).append(". ")
@@ -70,7 +70,7 @@ public class Sprint8Controller {
                   .append(" - Salaire: ").append(employees[i].getSalary())
                   .append("\n");
         }
-        
+
         return result.toString();
     }
 
@@ -89,12 +89,12 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveEmployeesAndDepartment")
     public String saveEmployeesAndDepartment(Employee[] employees, Department department) {
-        System.out.println("✓ " + employees.length + " employé(s) et 1 département reçu(s)");
+        System.out.println("" + employees.length + " employé(s) et 1 département reçu(s)");
         StringBuilder result = new StringBuilder();
         result.append("Département: ").append(department.getName())
               .append(" (").append(department.getLocation()).append(")\n");
         result.append("Employés assignés:\n");
-        
+
         for (int i = 0; i < employees.length; i++) {
             System.out.println("  [" + i + "] " + employees[i]);
             result.append((i + 1)).append(". ")
@@ -102,7 +102,7 @@ public class Sprint8Controller {
                   .append(" - ").append(employees[i].getDepartment())
                   .append("\n");
         }
-        
+
         return result.toString();
     }
 
@@ -122,24 +122,24 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveCompleteCompany")
     public String saveCompleteCompany(Employee[] employees, Department[] departments, String companyName) {
-        System.out.println("✓ Company data reçue pour " + companyName);
+        System.out.println("Company data reçue pour " + companyName);
         StringBuilder result = new StringBuilder();
         result.append("=== Données de l'entreprise: ").append(companyName).append(" ===\n");
         result.append("\nDépartements: ").append(departments.length).append("\n");
-        
+
         for (int i = 0; i < departments.length; i++) {
             System.out.println("  Department[" + i + "] " + departments[i]);
             result.append("  - ").append(departments[i].getName())
                   .append(" (").append(departments[i].getLocation()).append(")\n");
         }
-        
+
         result.append("\nEmployés: ").append(employees.length).append("\n");
         for (int i = 0; i < employees.length; i++) {
             System.out.println("  Employee[" + i + "] " + employees[i]);
             result.append("  - ").append(employees[i].getName())
                   .append(" (").append(employees[i].getSalary()).append(")\n");
         }
-        
+
         return result.toString();
     }
 
@@ -155,7 +155,7 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveProject")
     public String saveProject(Project project) {
-        System.out.println("✓ Projet reçu: " + project);
+        System.out.println("Projet reçu: " + project);
         return "Projet sauvegardé:\n" +
                "  ID: " + project.getId() + "\n" +
                "  Titre: " + project.getTitle() + "\n" +
@@ -179,11 +179,11 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveProjectsWithTeam")
     public String saveProjectsWithTeam(Project[] projects, String teamLeader) {
-        System.out.println("✓ " + projects.length + " projet(s) pour l'équipe de " + teamLeader);
+        System.out.println("" + projects.length + " projet(s) pour l'équipe de " + teamLeader);
         StringBuilder result = new StringBuilder();
         result.append("Équipe dirigée par: ").append(teamLeader).append("\n");
         result.append("Projets assignés:\n");
-        
+
         for (int i = 0; i < projects.length; i++) {
             System.out.println("  Project[" + i + "] " + projects[i]);
             result.append("  ").append((i + 1)).append(". ")
@@ -192,7 +192,7 @@ public class Sprint8Controller {
                   .append("€ - Actif: ").append(projects[i].isActive() ? "Oui" : "Non")
                   .append("\n");
         }
-        
+
         return result.toString();
     }
 
@@ -201,30 +201,30 @@ public class Sprint8Controller {
      * Démontre la capacité du framework à gérer plusieurs paramètres complexes simultanément
      */
     @PostMapping("/saveEverything")
-    public String saveEverything(Employee[] employees, Department[] departments, 
+    public String saveEverything(Employee[] employees, Department[] departments,
                                  Project[] projects, String companyName) {
-        System.out.println("✓ Données complètes reçues pour " + companyName);
+        System.out.println("Données complètes reçues pour " + companyName);
         StringBuilder result = new StringBuilder();
         result.append("====== DONNÉES COMPLÈTES: ").append(companyName).append(" ======\n\n");
-        
+
         result.append("EMPLOYÉS (").append(employees.length).append("):\n");
         for (int i = 0; i < employees.length; i++) {
             result.append("  ").append((i + 1)).append(". ").append(employees[i].getName())
                   .append(" - Salaire: ").append(employees[i].getSalary()).append("€\n");
         }
-        
+
         result.append("\nDÉPARTEMENTS (").append(departments.length).append("):\n");
         for (int i = 0; i < departments.length; i++) {
             result.append("  ").append((i + 1)).append(". ").append(departments[i].getName())
                   .append(" - ").append(departments[i].getLocation()).append("\n");
         }
-        
+
         result.append("\nPROJETS (").append(projects.length).append("):\n");
         for (int i = 0; i < projects.length; i++) {
             result.append("  ").append((i + 1)).append(". ").append(projects[i].getTitle())
                   .append(" - Budget: ").append(projects[i].getBudget()).append("€\n");
         }
-        
+
         return result.toString();
     }
 
@@ -234,21 +234,21 @@ public class Sprint8Controller {
      */
     @PostMapping("/saveWithOptional")
     public String saveWithOptional(Employee employee, Department department) {
-        System.out.println("✓ Données optionnelles reçues");
+        System.out.println("Données optionnelles reçues");
         StringBuilder result = new StringBuilder();
-        
+
         if (employee != null && employee.getName() != null && !employee.getName().isEmpty()) {
             result.append("Employé: ").append(employee.getName()).append("\n");
         } else {
             result.append("Aucun employé fourni\n");
         }
-        
+
         if (department != null && department.getName() != null && !department.getName().isEmpty()) {
             result.append("Département: ").append(department.getName()).append("\n");
         } else {
             result.append("Aucun département fourni\n");
         }
-        
+
         return result.toString();
     }
 }

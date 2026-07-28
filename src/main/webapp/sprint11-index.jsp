@@ -102,11 +102,11 @@
     </style>
 </head>
 <body>
-    <h1>🎯 Sprint 11 & 11 bis - Sessions et Sécurité</h1>
-    
+    <h1> Sprint 11 & 11 bis - Sessions et Sécurité</h1>
+
     <div class="section">
-        <h2>📋 Sprint 11 : Gestion des Sessions</h2>
-        
+        <h2> Sprint 11 : Gestion des Sessions</h2>
+
         <div class="note">
             <strong>Objectif :</strong> Gérer les sessions HTTP via Controller et FrontServlet
             <ul>
@@ -147,8 +147,8 @@
     </div>
 
     <div class="section">
-        <h2>🔒 Sprint 11 bis : Sécurité et Contrôle d'Accès</h2>
-        
+        <h2> Sprint 11 bis : Sécurité et Contrôle d'Accès</h2>
+
         <div class="note">
             <strong>Objectif :</strong> Sécuriser l'accès aux méthodes du Controller
             <ul>

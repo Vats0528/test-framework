@@ -104,50 +104,50 @@
 <body>
     <div class="container">
         <a href="sprint8-index.jsp" class="back-link">← Retour à l'index</a>
-        
+
         <div class="header">
             <h1>Test 6: Projet Simple</h1>
             <p>Binding d'un objet Project avec types mixtes</p>
         </div>
-        
+
         <div class="info-box">
             <p><strong>Format de binding:</strong> <code>project.attribut=valeur</code></p>
             <p><strong>Types:</strong> int, String, double, boolean</p>
             <p><strong>Cas d'usage:</strong> Sauvegarder les données d'un projet</p>
         </div>
-        
-        <form action="<%= request.getContextPath() %>/sprint8/saveProject" method="POST">
+
+        <form action="<%= request.getContextPath() %>/front/saveProject" method="POST">
             <div class="form-group">
                 <label for="id">ID Projet:</label>
                 <input type="number" id="id" name="project.id" value="100" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="title">Titre:</label>
                 <input type="text" id="title" name="project.title" value="Application Web 2024" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="project.description" value="Développement d'une plateforme e-commerce" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="budget">Budget (€):</label>
                 <input type="number" id="budget" name="project.budget" value="150000" step="0.01" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="active">Statut:</label>
                 <select id="active" name="project.active" required>
-                    <option value="true">✓ Actif</option>
-                    <option value="false">✗ Inactif</option>
+                    <option value="true"> Actif</option>
+                    <option value="false"> Inactif</option>
                 </select>
             </div>
-            
+
             <div class="btn-group">
-                <button type="submit" class="btn-submit">✓ Soumettre</button>
-                <button type="reset" class="btn-reset">↺ Réinitialiser</button>
+                <button type="submit" class="btn-submit"> Soumettre</button>
+                <button type="reset" class="btn-reset">Réinitialiser</button>
             </div>
         </form>
     </div>
